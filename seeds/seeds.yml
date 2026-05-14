@@ -1,0 +1,39 @@
+version: 2
+
+seeds:
+  - name: mta_channel_attribution_summary
+    description: "Marketing attribution summary data for different brands and channels"
+
+    columns:
+      - name: brand
+        description: "Name of the brand or business category"
+
+      - name: channel
+        description: "Marketing or advertising channel used for customer acquisition"
+
+      - name: distinct_conversions
+        description: "Total number of unique customer conversions generated"
+
+      - name: total_revenue
+        description: "Overall revenue generated from all conversions"
+
+      - name: total_ad_spend
+        description: "Total advertising or marketing spend for the channel"
+
+      - name: first_touch_revenue
+        description: "Revenue attributed to the first customer interaction channel"
+
+      - name: last_touch_revenue
+        description: "Revenue attributed to the final customer interaction before conversion"
+
+      - name: linear_revenue
+        description: "Revenue distributed equally across all customer touchpoints"
+
+      - name: time_decay_revenue
+        description: "Revenue attribution giving higher weight to recent touchpoints"
+
+      - name: u_shaped_revenue
+        description: "Revenue attribution giving major weight to first and last interactions"
+
+      - name: u_shaped_roas
+        description: "Return on ad spend calculated using U-shaped attribution model"

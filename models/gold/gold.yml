@@ -8,6 +8,8 @@ models:
       the Silver layer. It includes customer, product, pricing,
       and order-related information used for downstream analytics
       and reporting.
+    config: 
+     tags: ['gold']
 
     columns:
 
