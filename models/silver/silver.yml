@@ -9,7 +9,7 @@ models:
       and order-related information used for downstream analytics
       and reporting.
     config:
-      tags: ['silver']
+     tags: ['silver']
 
     columns:
 
