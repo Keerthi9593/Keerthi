@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: DBT_DATA
+    schema: BRONZE
+
+    tables:
+      - name: CUSTOMER_ORDERS_RAW
+
+models:
+  - name: my_first_dbt_model
+    description: "Removing nulls"
+
+  - name: my_second_dbt_model
+    description: "Second model"
+  
