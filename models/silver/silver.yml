@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: customer_orders
+
+    description: >
+      This table contains transformed customer order data loaded from
+      the Bronze layer. It includes customer, product, pricing,
+      and order-related information used for downstream analytics
+      and reporting.
+
+    columns:
+
+      - name: order_id
+        description: Unique identifier for each customer order
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_name
+        description: Name of the customer who placed the order
+
+      - name: email
+        description: Email address of the customer
+
+      - name: product_name
+        description: Name of the purchased product
+
+      - name: category
+        description: Product category classification
+
+      - name: quantity
+        description: Quantity of products ordered
+
+      - name: price
+        description: Price of a single product item
+
+      - name: order_date
+        description: Date on which the order was placed
+
+      - name: city
+        description: Customer city location
