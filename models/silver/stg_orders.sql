@@ -1,0 +1,17 @@
+WITH source AS (
+    SELECT * FROM {{ source('sales', 'orders') }}
+)
+
+SELECT
+    ORDER_ID,
+    CUSTOMER_ID,
+    ORDER_STATUS,
+    {{ order_status_label('ORDER_STATUS') }} AS ORDER_STATUS_LABEL,
+    ORDER_DATE,
+    REQUIRED_DATE,
+    SHIPPED_DATE,
+    DATEDIFF('day', ORDER_DATE, SHIPPED_DATE) AS SHIPPING_DELAY_DAYS,
+    DATEDIFF('day', ORDER_DATE, REQUIRED_DATE) AS REQUIRED_LEAD_DAYS,
+    STORE_ID,
+    STAFF_ID
+FROM source
