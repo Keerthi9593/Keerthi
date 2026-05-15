@@ -1,21 +1,2 @@
 version: 2
 
-sources:
-  - name: production
-    database: BIKESTORES
-    schema: PRODUCTION
-    tables:
-      - name: brands
-      - name: categories
-      - name: products
-      - name: stocks
-
-  - name: sales
-    database: BIKESTORES
-    schema: SALES
-    tables:
-      - name: customers
-      - name: orders
-      - name: order_items
-      - name: staffs
-      - name: stores
