@@ -1,17 +1,21 @@
 version: 2
 
 sources:
-  - name: bronze
-    database: DBT_DATA
-    schema: BRONZE
-
+  - name: production
+    database: BIKESTORES
+    schema: PRODUCTION
     tables:
-      - name: CUSTOMER_ORDERS_RAW
+      - name: brands
+      - name: categories
+      - name: products
+      - name: stocks
 
-models:
-  - name: my_first_dbt_model
-    description: "Removing nulls"
-
-  - name: my_second_dbt_model
-    description: "Second model"
-  
+  - name: sales
+    database: BIKESTORES
+    schema: SALES
+    tables:
+      - name: customers
+      - name: orders
+      - name: order_items
+      - name: staffs
+      - name: stores

@@ -1,0 +1,50 @@
+WITH stores AS (
+    SELECT * FROM {{ ref('stg_stores') }}
+),
+
+store_metrics AS (
+    SELECT
+        STORE_ID,
+        SUM(NET_PRICE) AS TOTAL_REVENUE,
+        COUNT(DISTINCT ORDER_ID) AS TOTAL_ORDERS,
+        COUNT(DISTINCT CUSTOMER_ID) AS UNIQUE_CUSTOMERS
+    FROM {{ ref('fct_sales') }}
+    GROUP BY STORE_ID
+),
+
+store_staff AS (
+    SELECT
+        STORE_ID,
+        COUNT(*) AS STAFF_COUNT
+    FROM {{ ref('stg_staffs') }}
+    WHERE ACTIVE = 1
+    GROUP BY STORE_ID
+),
+
+store_inventory AS (
+    SELECT
+        STORE_ID,
+        SUM(QUANTITY) AS TOTAL_STOCK_QUANTITY,
+        COUNT(DISTINCT PRODUCT_ID) AS DISTINCT_PRODUCTS_IN_STOCK
+    FROM {{ ref('stg_stocks') }}
+    GROUP BY STORE_ID
+)
+
+SELECT
+    s.STORE_ID,
+    s.STORE_NAME,
+    s.EMAIL,
+    s.PHONE,
+    s.FULL_ADDRESS,
+    s.CITY,
+    s.STATE,
+    COALESCE(sm.TOTAL_REVENUE, 0) AS TOTAL_REVENUE,
+    COALESCE(sm.TOTAL_ORDERS, 0) AS TOTAL_ORDERS,
+    COALESCE(sm.UNIQUE_CUSTOMERS, 0) AS UNIQUE_CUSTOMERS,
+    COALESCE(ss.STAFF_COUNT, 0) AS ACTIVE_STAFF_COUNT,
+    COALESCE(si.TOTAL_STOCK_QUANTITY, 0) AS TOTAL_STOCK_QUANTITY,
+    COALESCE(si.DISTINCT_PRODUCTS_IN_STOCK, 0) AS DISTINCT_PRODUCTS_IN_STOCK
+FROM stores s
+LEFT JOIN store_metrics sm ON s.STORE_ID = sm.STORE_ID
+LEFT JOIN store_staff ss ON s.STORE_ID = ss.STORE_ID
+LEFT JOIN store_inventory si ON s.STORE_ID = si.STORE_ID
