@@ -36,15 +36,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   classwallet:
-    bronze:
-      +database: BIKESTORES
-      +schema: BRONZE
-      +materialized: table
     silver:
       +database: BIKESTORES
       +schema: SILVER
       +materialized: table
-
     gold:
       +database: BIKESTORES
       +schema: GOLD
