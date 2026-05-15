@@ -58,7 +58,8 @@ models:
         description: Human-readable order status
         tests:
           - accepted_values:
-              values: ['Pending', 'Processing', 'Rejected', 'Completed', 'Unknown']
+              arguments:
+                values: ['Pending', 'Processing', 'Rejected', 'Completed', 'Unknown']
       - name: order_date
         description: Date the order was placed
       - name: shipping_delay_days
@@ -155,7 +156,8 @@ models:
         description: Active or Inactive status label
         tests:
           - accepted_values:
-              values: ['Active', 'Inactive']
+              arguments:
+                values: ['Active', 'Inactive']
       - name: store_id
         description: FK to stores
       - name: store_name
