@@ -40,7 +40,7 @@ models:
     silver:
       +database: BIKESTORES
       +schema: SILVER
-      +materialized: table
+      +materialized: incremental
     gold:
       +database: BIKESTORES
       +schema: GOLD
