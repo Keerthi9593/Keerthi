@@ -1,3 +1,8 @@
+{{ config(
+    materialized='incremental',
+    unique_key='product_id'
+) }}
+
 WITH products AS (
     SELECT * FROM {{ source('production', 'products') }}
 ),

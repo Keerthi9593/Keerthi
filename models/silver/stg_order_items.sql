@@ -1,3 +1,8 @@
+{{ config(
+    materialized='incremental',
+    unique_key='order_item_key'
+) }}
+
 WITH source AS (
     SELECT * FROM {{ source('sales', 'order_items') }}
 )

@@ -1,3 +1,8 @@
+{{ config(
+    materialized='incremental',
+    unique_key='stock_key'
+) }}
+
 WITH stocks AS (
     SELECT * FROM {{ source('production', 'stocks') }}
 ),

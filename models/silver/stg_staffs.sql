@@ -1,3 +1,8 @@
+{{ config(
+    materialized='incremental',
+    unique_key='staff_id'
+) }}
+
 WITH staffs AS (
     SELECT * FROM {{ source('sales', 'staffs') }}
 ),
