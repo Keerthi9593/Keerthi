@@ -36,7 +36,7 @@ models:
       - name: email
         description: Customer email address
         tests:
-          - not_null
+          - not_nul
       - name: full_address
         description: Complete formatted address
       - name: city
